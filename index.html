@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Muhammad Shadab Saif — Flutter & Android Developer</title>
+  <meta name="description" content="Flutter & Android Developer building scalable mobile apps across FinTech, Lending, and E-Commerce." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0f172a;
+      --bg2:       #111827;
+      --bg3:       #1e293b;
+      --blue:      #0ea5e9;
+      --purple:    #6d28d9;
+      --violet:    #a78bfa;
+      --cyan:      #06b6d4;
+      --text:      #e2e8f0;
+      --muted:     #94a3b8;
+      --border:    rgba(255,255,255,0.07);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--blue); border-radius: 3px; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 8%; height: 64px;
+      background: rgba(15,23,42,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Fira Code', monospace;
+      font-size: 1rem; font-weight: 600;
+      background: linear-gradient(135deg, var(--blue), var(--violet));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none; font-size: 0.875rem;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--blue); }
+    .nav-cta {
+      padding: 0.45rem 1.1rem; border-radius: 6px; font-size: 0.875rem;
+      background: linear-gradient(135deg, var(--blue), var(--purple));
+      color: #fff; text-decoration: none; font-weight: 500;
+      transition: opacity .2s;
+    }
+    .nav-cta:hover { opacity: .85; }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; padding: 6rem 8% 4rem;
+      position: relative; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; pointer-events: none;
+    }
+    .blob {
+      position: absolute; border-radius: 50%; filter: blur(80px); opacity: .18;
+    }
+    .blob-1 { width: 500px; height: 500px; background: var(--blue);   top: -100px; left: -100px; }
+    .blob-2 { width: 400px; height: 400px; background: var(--purple); bottom: -80px; right: -80px; }
+    .blob-3 { width: 300px; height: 300px; background: var(--cyan);   top: 40%; left: 60%; }
+
+    .hero-inner { position: relative; max-width: 780px; }
+    .hero-badge {
+      display: inline-block; margin-bottom: 1.5rem;
+      padding: .35rem 1rem; border-radius: 99px; font-size: .75rem;
+      border: 1px solid rgba(14,165,233,.3);
+      background: rgba(14,165,233,.08);
+      color: var(--blue); font-family: 'Fira Code', monospace;
+      letter-spacing: .05em;
+    }
+    .hero-name {
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 700; line-height: 1.15;
+      background: linear-gradient(135deg, #fff 30%, var(--violet));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      margin-bottom: .75rem;
+    }
+    .hero-typing {
+      font-family: 'Fira Code', monospace;
+      font-size: clamp(1rem, 2.5vw, 1.35rem);
+      color: var(--blue); min-height: 2rem; margin-bottom: 1.5rem;
+    }
+    .cursor { animation: blink 1s step-end infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    .hero-desc {
+      color: var(--muted); font-size: 1.05rem; line-height: 1.75;
+      max-width: 560px; margin: 0 auto 2.5rem;
+    }
+    .hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      padding: .75rem 1.8rem; border-radius: 8px; font-size: .95rem; font-weight: 600;
+      background: linear-gradient(135deg, var(--blue), var(--purple));
+      color: #fff; text-decoration: none; transition: transform .2s, opacity .2s;
+    }
+    .btn-primary:hover { transform: translateY(-2px); opacity: .9; }
+    .btn-outline {
+      padding: .75rem 1.8rem; border-radius: 8px; font-size: .95rem; font-weight: 600;
+      border: 1px solid rgba(14,165,233,.4); color: var(--blue);
+      text-decoration: none; transition: background .2s, transform .2s;
+    }
+    .btn-outline:hover { background: rgba(14,165,233,.08); transform: translateY(-2px); }
+
+    /* ── SECTIONS ── */
+    section { padding: 6rem 8%; }
+    .section-label {
+      font-family: 'Fira Code', monospace; font-size: .8rem;
+      color: var(--blue); letter-spacing: .1em; text-transform: uppercase;
+      margin-bottom: .6rem;
+    }
+    .section-title {
+      font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    .section-sub { color: var(--muted); max-width: 540px; line-height: 1.7; margin-bottom: 3.5rem; }
+
+    /* ── ABOUT ── */
+    #about { background: var(--bg2); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .about-avatar {
+      display: flex; justify-content: center;
+    }
+    .avatar-wrap {
+      width: 280px; height: 280px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue), var(--purple));
+      padding: 3px; flex-shrink: 0;
+    }
+    .avatar-inner {
+      width: 100%; height: 100%; border-radius: 50%;
+      background: var(--bg2);
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+    .avatar-inner img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+    .avatar-inner svg { width: 100%; height: 100%; }
+
+    .about-points { list-style: none; display: flex; flex-direction: column; gap: .9rem; margin-top: 1.5rem; }
+    .about-points li { display: flex; gap: .75rem; align-items: flex-start; color: var(--muted); font-size: .95rem; line-height: 1.6; }
+    .about-points li span:first-child { font-size: 1.1rem; margin-top: 1px; flex-shrink: 0; }
+    .about-points li strong { color: var(--text); }
+
+    /* ── WHAT I DO ── */
+    .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.5rem; }
+    .card {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 12px; padding: 1.75rem;
+      transition: transform .25s, border-color .25s;
+    }
+    .card:hover { transform: translateY(-4px); border-color: rgba(14,165,233,.3); }
+    .card-icon { font-size: 1.8rem; margin-bottom: 1rem; }
+    .card h3 { font-size: 1rem; font-weight: 600; margin-bottom: .5rem; }
+    .card p { color: var(--muted); font-size: .875rem; line-height: 1.65; }
+
+    /* ── TECH STACK ── */
+    #stack { background: var(--bg2); }
+    .stack-group { margin-bottom: 2.5rem; }
+    .stack-group-label {
+      font-family: 'Fira Code', monospace; font-size: .75rem;
+      color: var(--muted); letter-spacing: .08em; text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .badges { display: flex; flex-wrap: wrap; gap: .65rem; }
+    .badge {
+      display: inline-flex; align-items: center; gap: .45rem;
+      padding: .4rem .9rem; border-radius: 6px; font-size: .82rem; font-weight: 500;
+      border: 1px solid var(--border); background: var(--bg3);
+      color: var(--text); transition: border-color .2s, background .2s;
+    }
+    .badge:hover { border-color: var(--blue); background: rgba(14,165,233,.07); }
+    .badge-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+
+    /* ── EXPERIENCE ── */
+    .timeline { position: relative; padding-left: 2rem; }
+    .timeline::before {
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--blue), var(--purple));
+      border-radius: 1px;
+    }
+    .tl-item { position: relative; margin-bottom: 3rem; }
+    .tl-dot {
+      position: absolute; left: -2.55rem; top: .35rem;
+      width: 12px; height: 12px; border-radius: 50%;
+      background: var(--blue); border: 2px solid var(--bg);
+      box-shadow: 0 0 0 3px rgba(14,165,233,.25);
+    }
+    .tl-dot.active { background: #22c55e; box-shadow: 0 0 0 3px rgba(34,197,94,.25); }
+    .tl-date { font-family: 'Fira Code', monospace; font-size: .75rem; color: var(--blue); margin-bottom: .4rem; }
+    .tl-role { font-size: 1.1rem; font-weight: 600; margin-bottom: .15rem; }
+    .tl-company { color: var(--muted); font-size: .9rem; margin-bottom: .8rem; }
+    .tl-points { list-style: none; display: flex; flex-direction: column; gap: .5rem; }
+    .tl-points li {
+      color: var(--muted); font-size: .875rem; line-height: 1.65;
+      padding-left: 1rem; position: relative;
+    }
+    .tl-points li::before {
+      content: '▸'; position: absolute; left: 0; color: var(--blue); font-size: .75rem; top: .1rem;
+    }
+
+    /* ── FOCUS ── */
+    #focus { background: var(--bg2); }
+    .focus-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1.25rem; }
+    .focus-card {
+      background: var(--bg3); border: 1px solid var(--border); border-radius: 12px;
+      padding: 1.5rem 1.25rem; text-align: center;
+      transition: transform .25s, border-color .25s;
+    }
+    .focus-card:hover { transform: translateY(-4px); border-color: rgba(109,40,217,.4); }
+    .focus-icon { font-size: 2rem; margin-bottom: .75rem; }
+    .focus-card h3 { font-size: .9rem; font-weight: 600; color: var(--text); }
+
+    /* ── CONTACT ── */
+    .contact-wrap {
+      max-width: 640px; margin: 0 auto; text-align: center;
+    }
+    .contact-links { display: flex; gap: 1.25rem; justify-content: center; flex-wrap: wrap; margin-top: 2.5rem; }
+    .contact-link {
+      display: flex; align-items: center; gap: .6rem;
+      padding: .75rem 1.5rem; border-radius: 8px; font-size: .9rem; font-weight: 500;
+      text-decoration: none; border: 1px solid var(--border);
+      background: var(--bg3); color: var(--text);
+      transition: transform .2s, border-color .2s;
+    }
+    .contact-link:hover { transform: translateY(-3px); border-color: var(--blue); color: var(--blue); }
+    .contact-link svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center; padding: 2rem 8%;
+      border-top: 1px solid var(--border);
+      color: var(--muted); font-size: .8rem;
+    }
+    footer span { color: var(--blue); }
+
+    /* ── MOBILE ── */
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: .3s; }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 5%; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      section { padding: 4rem 5%; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-avatar { order: -1; }
+      .avatar-wrap { width: 200px; height: 200px; }
+      #hero { padding: 5rem 5% 3rem; }
+    }
+
+    /* ── FADE IN ── */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">&lt;shadab.dev /&gt;</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#what-i-do">Work</a></li>
+    <li><a href="#stack">Stack</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="mailto:saifshadab08@gmail.com" class="nav-cta">Hire Me</a>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-badge">📍 Delhi, India · Available for opportunities</div>
+    <h1 class="hero-name">Muhammad Shadab Saif</h1>
+    <div class="hero-typing" id="typing-target"><span id="typed-text"></span><span class="cursor">|</span></div>
+    <p class="hero-desc">
+      I build mobile applications, Flutter packages, and developer-focused solutions
+      that help businesses transform ideas into production-ready products.
+    </p>
+    <div class="hero-actions">
+      <a href="#experience" class="btn-primary">View My Work</a>
+      <a href="mailto:saifshadab08@gmail.com" class="btn-outline">Get In Touch</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-avatar">
+      <div class="avatar-wrap">
+        <div class="avatar-inner">
+          <img src="https://raw.githubusercontent.com/Muhammad-Shadab/Muhammad-Shadab/main/profile-banner.svg" alt="Muhammad Shadab Saif" />
+        </div>
+      </div>
+    </div>
+    <div>
+      <p class="section-label">// about me</p>
+      <h2 class="section-title reveal">Building products,<br/>not just apps.</h2>
+      <p style="color:var(--muted);line-height:1.75;margin-bottom:1rem;" class="reveal">
+        I'm a Mobile Engineer with a focus on Flutter and Android development. Since 2021,
+        I've shipped apps across FinTech, Lending, E-Commerce, Utility, and Consumer domains —
+        working closely with founders, stakeholders, and product teams to turn business goals
+        into polished, production-ready applications.
+      </p>
+      <ul class="about-points reveal">
+        <li><span>📱</span><span>Building mobile apps with <strong>Flutter & Android</strong> since 2021</span></li>
+        <li><span>🏦</span><span>Deep experience in <strong>Fintech & Loan Processing</strong> apps</span></li>
+        <li><span>🔧</span><span>Creating <strong>Flutter Packages</strong> & developer tools</span></li>
+        <li><span>🌐</span><span>Active <strong>Open Source</strong> contributor and creator</span></li>
+        <li><span>🤖</span><span>Exploring <strong>AI-powered</strong> mobile applications</span></li>
+        <li><span>🎓</span><span><strong>MCA</strong> — Dr. A.P.J. Abdul Kalam Technical University</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT I DO -->
+<section id="what-i-do">
+  <p class="section-label">// what i do</p>
+  <h2 class="section-title reveal">How I Can Help You</h2>
+  <p class="section-sub reveal">From idea to app store — I handle the full mobile development lifecycle.</p>
+  <div class="cards">
+    <div class="card reveal">
+      <div class="card-icon">📱</div>
+      <h3>Flutter Development</h3>
+      <p>Build cross-platform Flutter apps from scratch — fast, beautiful, and production-ready for both iOS and Android.</p>
+    </div>
+    <div class="card reveal">
+      <div class="card-icon">🤖</div>
+      <h3>Android Development</h3>
+      <p>Native Android apps in Kotlin & Java using Jetpack Compose, MVVM, and Clean Architecture patterns.</p>
+    </div>
+    <div class="card reveal">
+      <div class="card-icon">📦</div>
+      <h3>SDKs & Packages</h3>
+      <p>Design reusable Flutter packages and developer SDKs that teams can drop into any project.</p>
+    </div>
+    <div class="card reveal">
+      <div class="card-icon">🔗</div>
+      <h3>Integrations</h3>
+      <p>Integrate REST APIs, payment gateways, analytics platforms, Firebase, and third-party SDKs seamlessly.</p>
+    </div>
+    <div class="card reveal">
+      <div class="card-icon">🏪</div>
+      <h3>App Store Publishing</h3>
+      <p>Handle Play Store & App Store submissions, compliance, review issues, and release automation end-to-end.</p>
+    </div>
+    <div class="card reveal">
+      <div class="card-icon">💡</div>
+      <h3>Idea → Product</h3>
+      <p>Convert business requirements into scalable mobile solutions — working directly with founders and stakeholders.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TECH STACK -->
+<section id="stack">
+  <p class="section-label">// tech stack</p>
+  <h2 class="section-title reveal">Tools & Technologies</h2>
+
+  <div class="stack-group reveal">
+    <div class="stack-group-label">Languages</div>
+    <div class="badges">
+      <span class="badge"><span class="badge-dot" style="background:#7F52FF"></span>Kotlin</span>
+      <span class="badge"><span class="badge-dot" style="background:#ED8B00"></span>Java</span>
+      <span class="badge"><span class="badge-dot" style="background:#0175C2"></span>Dart</span>
+    </div>
+  </div>
+
+  <div class="stack-group reveal">
+    <div class="stack-group-label">Frameworks & Tools</div>
+    <div class="badges">
+      <span class="badge"><span class="badge-dot" style="background:#02569B"></span>Flutter</span>
+      <span class="badge"><span class="badge-dot" style="background:#3DDC84"></span>Android SDK</span>
+      <span class="badge"><span class="badge-dot" style="background:#4285F4"></span>Jetpack Compose</span>
+      <span class="badge"><span class="badge-dot" style="background:#FFCA28"></span>Firebase</span>
+    </div>
+  </div>
+
+  <div class="stack-group reveal">
+    <div class="stack-group-label">Architecture & Patterns</div>
+    <div class="badges">
+      <span class="badge"><span class="badge-dot" style="background:#0ea5e9"></span>MVVM</span>
+      <span class="badge"><span class="badge-dot" style="background:#6d28d9"></span>Clean Architecture</span>
+      <span class="badge"><span class="badge-dot" style="background:#FF6B6B"></span>REST API</span>
+      <span class="badge"><span class="badge-dot" style="background:#333"></span>WebSocket</span>
+    </div>
+  </div>
+
+  <div class="stack-group reveal">
+    <div class="stack-group-label">App Store Publishing & Release</div>
+    <div class="badges">
+      <span class="badge"><span class="badge-dot" style="background:#414141"></span>Google Play</span>
+      <span class="badge"><span class="badge-dot" style="background:#0D96F6"></span>App Store</span>
+      <span class="badge"><span class="badge-dot" style="background:#2088FF"></span>CI/CD Automation</span>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <p class="section-label">// experience</p>
+  <h2 class="section-title reveal">Work History</h2>
+  <p class="section-sub reveal">Building impactful mobile products since 2021.</p>
+
+  <div class="timeline">
+    <div class="tl-item reveal">
+      <div class="tl-dot active"></div>
+      <div class="tl-date">May 2025 – Present</div>
+      <div class="tl-role">SDE II</div>
+      <div class="tl-company">NovoStack · Noida, India</div>
+      <ul class="tl-points">
+        <li>Leading mobile architecture decisions for Flutter & Android products across multiple domains</li>
+        <li>Collaborating directly with CEOs, stakeholders, and clients to define and deliver mobile solutions</li>
+        <li>Driving app publishing, compliance, and release automation for Play Store & App Store</li>
+      </ul>
+    </div>
+
+    <div class="tl-item reveal">
+      <div class="tl-dot"></div>
+      <div class="tl-date">May 2022 – May 2025</div>
+      <div class="tl-role">SDE</div>
+      <div class="tl-company">NovoStack · Noida, India</div>
+      <ul class="tl-points">
+        <li>Developed and maintained Android & Flutter apps using Kotlin, Java, and Dart across FinTech, E-Commerce, Utility, and Consumer domains</li>
+        <li>Designed features using Clean Architecture, MVVM, Jetpack Components, and modern Flutter practices</li>
+        <li>Integrated REST APIs, payment services, authentication systems, analytics platforms, and third-party SDKs</li>
+        <li>Resolved critical production issues and improved overall application performance and stability</li>
+      </ul>
+    </div>
+
+    <div class="tl-item reveal">
+      <div class="tl-dot"></div>
+      <div class="tl-date">Nov 2021 – Feb 2022</div>
+      <div class="tl-role">Android Developer</div>
+      <div class="tl-company">Paytail · Gurugram, India</div>
+      <ul class="tl-points">
+        <li>Optimized app codebase reducing app size by ~50%</li>
+        <li>Developed "Find Nearby Store" feature in the consumer app</li>
+        <li>Redesigned and implemented the onboarding UI for new consumers</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CURRENT FOCUS -->
+<section id="focus">
+  <p class="section-label">// current focus</p>
+  <h2 class="section-title reveal">What I'm Working On</h2>
+  <div class="focus-grid">
+    <div class="focus-card reveal">
+      <div class="focus-icon">🐦</div>
+      <h3>Flutter Development</h3>
+    </div>
+    <div class="focus-card reveal">
+      <div class="focus-icon">🔓</div>
+      <h3>Open Source</h3>
+    </div>
+    <div class="focus-card reveal">
+      <div class="focus-icon">🤖</div>
+      <h3>AI-Powered Mobile Apps</h3>
+    </div>
+    <div class="focus-card reveal">
+      <div class="focus-icon">🏗️</div>
+      <h3>Mobile Architecture</h3>
+    </div>
+    <div class="focus-card reveal">
+      <div class="focus-icon">🔧</div>
+      <h3>Developer Tools</h3>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-wrap">
+    <p class="section-label">// contact</p>
+    <h2 class="section-title reveal">Let's Build Together</h2>
+    <p style="color:var(--muted);line-height:1.75;" class="reveal">
+      Have an app idea? Need a Flutter or Android developer?<br/>
+      I'm open to freelance projects, collaborations, and full-time opportunities.
+    </p>
+    <div class="contact-links reveal">
+      <a href="mailto:saifshadab08@gmail.com" class="contact-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        saifshadab08@gmail.com
+      </a>
+      <a href="https://www.linkedin.com/in/muhammad-shadab7869" target="_blank" class="contact-link">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+      <a href="https://github.com/Muhammad-Shadab" target="_blank" class="contact-link">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        GitHub
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Designed & built by <span>Muhammad Shadab Saif</span> · 2024</p>
+</footer>
+
+<script>
+  // Typing animation
+  const lines = [
+    'Flutter Developer',
+    'Android Engineer',
+    'Open Source Creator',
+    'Mobile Engineer Since 2021',
+    'Building Products, Not Just Apps',
+  ];
+  let li = 0, ci = 0, deleting = false;
+  const el = document.getElementById('typed-text');
+
+  function type() {
+    const current = lines[li];
+    if (!deleting) {
+      el.textContent = current.slice(0, ++ci);
+      if (ci === current.length) { deleting = true; setTimeout(type, 1800); return; }
+    } else {
+      el.textContent = current.slice(0, --ci);
+      if (ci === 0) { deleting = false; li = (li + 1) % lines.length; }
+    }
+    setTimeout(type, deleting ? 45 : 80);
+  }
+  type();
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  reveals.forEach(r => obs.observe(r));
+
+  // Mobile menu
+  function toggleMenu() {
+    const links = document.querySelector('.nav-links');
+    links.style.display = links.style.display === 'flex' ? 'none' : 'flex';
+    if (links.style.display === 'flex') {
+      links.style.flexDirection = 'column';
+      links.style.position = 'absolute';
+      links.style.top = '64px';
+      links.style.left = '0'; links.style.right = '0';
+      links.style.background = 'rgba(15,23,42,0.97)';
+      links.style.padding = '1.5rem 5%';
+      links.style.borderBottom = '1px solid rgba(255,255,255,0.07)';
+    }
+  }
+</script>
+</body>
+</html>
