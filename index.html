@@ -607,7 +607,7 @@
   }
 
   function closeMenu() {
-    navLinks.style.display = 'none';
+    if (window.innerWidth <= 640) navLinks.style.display = 'none';
   }
 
   function toggleMenu() {
