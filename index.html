@@ -583,19 +583,35 @@
   reveals.forEach(r => obs.observe(r));
 
   // Mobile menu
-  function toggleMenu() {
-    const links = document.querySelector('.nav-links');
-    links.style.display = links.style.display === 'flex' ? 'none' : 'flex';
-    if (links.style.display === 'flex') {
-      links.style.flexDirection = 'column';
-      links.style.position = 'absolute';
-      links.style.top = '64px';
-      links.style.left = '0'; links.style.right = '0';
-      links.style.background = 'rgba(15,23,42,0.97)';
-      links.style.padding = '1.5rem 5%';
-      links.style.borderBottom = '1px solid rgba(255,255,255,0.07)';
-    }
+  const navLinks = document.querySelector('.nav-links');
+
+  function openMenu() {
+    navLinks.style.display = 'flex';
+    navLinks.style.flexDirection = 'column';
+    navLinks.style.position = 'absolute';
+    navLinks.style.top = '64px';
+    navLinks.style.left = '0';
+    navLinks.style.right = '0';
+    navLinks.style.background = 'rgba(15,23,42,0.97)';
+    navLinks.style.padding = '1.5rem 5%';
+    navLinks.style.borderBottom = '1px solid rgba(255,255,255,0.07)';
   }
+
+  function closeMenu() {
+    navLinks.style.display = 'none';
+  }
+
+  function toggleMenu() {
+    navLinks.style.display === 'flex' ? closeMenu() : openMenu();
+  }
+
+  // Close menu when any nav link is clicked
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+
+  // Close menu when clicking outside the nav
+  document.addEventListener('click', e => {
+    if (!e.target.closest('nav')) closeMenu();
+  });
 </script>
 </body>
 </html>
