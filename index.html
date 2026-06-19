@@ -260,15 +260,30 @@
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
     .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: .3s; }
 
-    @media (max-width: 768px) {
+    @media (max-width: 640px) {
       nav { padding: 0 5%; }
       .nav-links { display: none; }
+      .nav-cta { display: none; }
       .hamburger { display: flex; }
       section { padding: 4rem 5%; }
       .about-grid { grid-template-columns: 1fr; }
       .about-avatar { order: -1; }
       .avatar-wrap { width: 200px; height: 200px; }
       #hero { padding: 5rem 5% 3rem; }
+      .hero-actions { flex-direction: column; align-items: center; }
+      .btn-primary, .btn-outline { width: 100%; max-width: 280px; text-align: center; }
+      .cards { grid-template-columns: 1fr; }
+      .focus-grid { grid-template-columns: 1fr 1fr; }
+      .contact-links { flex-direction: column; align-items: center; }
+      .contact-link { width: 100%; max-width: 320px; justify-content: center; }
+    }
+
+    @media (min-width: 641px) and (max-width: 900px) {
+      nav { padding: 0 5%; }
+      section { padding: 4rem 5%; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-avatar { order: -1; }
+      .avatar-wrap { width: 220px; height: 220px; }
     }
 
     /* ── FADE IN ── */
