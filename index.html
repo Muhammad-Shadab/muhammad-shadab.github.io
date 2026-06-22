@@ -249,6 +249,11 @@
     .contact-link:hover { transform: translateY(-3px); border-color: var(--blue); color: var(--blue); }
     .contact-link svg { width: 18px; height: 18px; flex-shrink: 0; }
 
+    /* ── PROJECTS ── */
+    .proj-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1rem; }
+    .proj-tag { font-size: .72rem; padding: .2rem .6rem; border-radius: 4px; background: rgba(14,165,233,.08); border: 1px solid rgba(14,165,233,.18); color: var(--blue); }
+    .proj-domain { font-size: .72rem; padding: .2rem .6rem; border-radius: 4px; background: rgba(109,40,217,.08); border: 1px solid rgba(109,40,217,.2); color: var(--violet); }
+
     /* ── FOOTER ── */
     footer {
       text-align: center; padding: 2rem 8%;
@@ -302,6 +307,7 @@
     <li><a href="#what-i-do">Work</a></li>
     <li><a href="#stack">Stack</a></li>
     <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <a href="mailto:saifshadab08@gmail.com" class="nav-cta">Hire Me</a>
@@ -489,6 +495,112 @@
         <li>Redesigned and implemented the onboarding UI for new consumers</li>
       </ul>
     </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <p class="section-label">// projects</p>
+  <h2 class="section-title reveal">Things I've Built</h2>
+  <p class="section-sub reveal">A selection of apps, tools, and platforms I've worked on across different domains.</p>
+  <div class="cards">
+
+    <div class="card reveal">
+      <div class="card-icon">📦</div>
+      <h3>Flutter Release Manager</h3>
+      <p>An open-source Flutter tool that automates the mobile app release workflow — from version bumping to Play Store & App Store submission.</p>
+      <div class="proj-tags">
+        <span class="proj-tag">Flutter</span>
+        <span class="proj-tag">Dart</span>
+        <span class="proj-tag">CI/CD</span>
+        <span class="proj-domain">Open Source</span>
+      </div>
+    </div>
+
+    <div class="card reveal">
+      <div class="card-icon">🏦</div>
+      <h3>Ruloans B2B</h3>
+      <p>A B2B lending platform for loan processing — built for financial institutions and business partners to manage loan pipelines and credit workflows.</p>
+      <div class="proj-tags">
+        <span class="proj-tag">Flutter</span>
+        <span class="proj-tag">Dart</span>
+        <span class="proj-tag">REST API</span>
+        <span class="proj-domain">FinTech · Lending</span>
+      </div>
+    </div>
+
+    <div class="card reveal">
+      <div class="card-icon">📱</div>
+      <h3>Ruloans B2C</h3>
+      <p>A consumer-facing Flutter app for loan applications and processing, designed for end users to apply, track, and manage their loans seamlessly.</p>
+      <div class="proj-tags">
+        <span class="proj-tag">Flutter</span>
+        <span class="proj-tag">Dart</span>
+        <span class="proj-tag">Firebase</span>
+        <span class="proj-domain">FinTech · Consumer</span>
+      </div>
+    </div>
+
+    <div class="card reveal">
+      <div class="card-icon">💸</div>
+      <h3>ShePays</h3>
+      <p>A UPI-based Flutter payment application enabling seamless digital transactions and payment flows for consumers.</p>
+      <div class="proj-tags">
+        <span class="proj-tag">Flutter</span>
+        <span class="proj-tag">Dart</span>
+        <span class="proj-tag">UPI</span>
+        <span class="proj-domain">FinTech · Payments</span>
+      </div>
+    </div>
+
+    <div class="card reveal">
+      <div class="card-icon">💳</div>
+      <h3>Direct Credit App</h3>
+      <p>A direct credit and lending Android application enabling customers to access credit products, manage repayments, and track loan status in real time.</p>
+      <div class="proj-tags">
+        <span class="proj-tag">Flutter</span>
+        <span class="proj-tag">Dart</span>
+        <span class="proj-tag">REST API</span>
+        <span class="proj-domain">FinTech · Lending</span>
+      </div>
+    </div>
+
+    <div class="card reveal">
+      <div class="card-icon">🌐</div>
+      <h3>Aaonri</h3>
+      <p>A community platform for Indians in the US — offering classified ads, e-commerce, job listings, visa query support, and more, all in one place.</p>
+      <div class="proj-tags">
+        <span class="proj-tag">Kotlin</span>
+        <span class="proj-tag">Android</span>
+        <span class="proj-tag">MVVM</span>
+        <span class="proj-domain">Community · E-Commerce</span>
+      </div>
+    </div>
+
+    <div class="card reveal">
+      <div class="card-icon">🏪</div>
+      <h3>Paytail Business</h3>
+      <p>The merchant-side Android app for the Paytail BNPL platform — enabling store owners to offer buy-now-pay-later options to customers at the point of sale.</p>
+      <div class="proj-tags">
+        <span class="proj-tag">Java</span>
+        <span class="proj-tag">Android</span>
+        <span class="proj-tag">MVVM</span>
+        <span class="proj-domain">FinTech · BNPL</span>
+      </div>
+    </div>
+
+    <div class="card reveal">
+      <div class="card-icon">🛍️</div>
+      <h3>Paytail Consumer</h3>
+      <p>The customer-facing Android app for Paytail — allowing users to discover partner stores, apply for BNPL credit, and manage their purchases and repayments.</p>
+      <div class="proj-tags">
+        <span class="proj-tag">Java</span>
+        <span class="proj-tag">Android</span>
+        <span class="proj-tag">Firebase</span>
+        <span class="proj-domain">FinTech · Consumer</span>
+      </div>
+    </div>
+
   </div>
 </section>
 
