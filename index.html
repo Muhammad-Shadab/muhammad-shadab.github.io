@@ -254,6 +254,22 @@
     .proj-tag { font-size: .72rem; padding: .2rem .6rem; border-radius: 4px; background: rgba(14,165,233,.08); border: 1px solid rgba(14,165,233,.18); color: var(--blue); }
     .proj-domain { font-size: .72rem; padding: .2rem .6rem; border-radius: 4px; background: rgba(109,40,217,.08); border: 1px solid rgba(109,40,217,.2); color: var(--violet); }
 
+    /* ── PROJECT LINKS ── */
+    .proj-links { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: .85rem; }
+    .proj-link {
+      display: inline-flex; align-items: center; gap: .35rem;
+      font-size: .75rem; padding: .28rem .65rem; border-radius: 5px;
+      border: 1px solid var(--border); color: var(--muted);
+      text-decoration: none; transition: border-color .2s, color .2s;
+    }
+    .proj-link:hover { border-color: var(--blue); color: var(--blue); }
+    .proj-link svg { width: 12px; height: 12px; flex-shrink: 0; }
+    .proj-private {
+      display: inline-flex; align-items: center; gap: .35rem;
+      font-size: .75rem; padding: .28rem .65rem; border-radius: 5px;
+      border: 1px solid var(--border); color: var(--muted); font-style: italic;
+    }
+
     /* ── FOOTER ── */
     footer {
       text-align: center; padding: 2rem 8%;
@@ -515,6 +531,12 @@
         <span class="proj-tag">CI/CD</span>
         <span class="proj-domain">Open Source</span>
       </div>
+      <div class="proj-links">
+        <a href="https://pub.dev/packages/flutter_release_manager" target="_blank" class="proj-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          pub.dev
+        </a>
+      </div>
     </div>
 
     <div class="card reveal">
@@ -526,6 +548,16 @@
         <span class="proj-tag">Dart</span>
         <span class="proj-tag">REST API</span>
         <span class="proj-domain">FinTech · Lending</span>
+      </div>
+      <div class="proj-links">
+        <a href="https://play.google.com/store/apps/details?id=com.ruloanss&hl=en_IN" target="_blank" class="proj-link">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76a2 2 0 0 1-1-.27 2 2 0 0 1-1-1.76V2.27a2 2 0 0 1 1-1.76 2 2 0 0 1 2 0l18 9.73a2 2 0 0 1 0 3.52l-18 9.73a2 2 0 0 1-1 .27z"/></svg>
+          Play Store
+        </a>
+        <a href="https://apps.apple.com/in/app/ruconnect-by-ruloans/id1661321073" target="_blank" class="proj-link">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          App Store
+        </a>
       </div>
     </div>
 
@@ -539,17 +571,33 @@
         <span class="proj-tag">Firebase</span>
         <span class="proj-domain">FinTech · Consumer</span>
       </div>
+      <div class="proj-links">
+        <a href="https://play.google.com/store/apps/details?id=com.ruloanss.b2c&hl=en_IN" target="_blank" class="proj-link">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76a2 2 0 0 1-1-.27 2 2 0 0 1-1-1.76V2.27a2 2 0 0 1 1-1.76 2 2 0 0 1 2 0l18 9.73a2 2 0 0 1 0 3.52l-18 9.73a2 2 0 0 1-1 .27z"/></svg>
+          Play Store
+        </a>
+        <a href="https://apps.apple.com/in/app/ruloans-loans-cibil-score/id6739210574" target="_blank" class="proj-link">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          App Store
+        </a>
+      </div>
     </div>
 
     <div class="card reveal">
       <div class="card-icon">💸</div>
       <h3>ShePays</h3>
-      <p>A UPI-based Flutter payment application enabling seamless digital transactions and payment flows for consumers.</p>
+      <p>A UPI-based Native Android payment application enabling seamless digital transactions and payment flows for consumers.</p>
       <div class="proj-tags">
-        <span class="proj-tag">Flutter</span>
-        <span class="proj-tag">Dart</span>
+        <span class="proj-tag">Java</span>
+        <span class="proj-tag">Native Android</span>
         <span class="proj-tag">UPI</span>
         <span class="proj-domain">FinTech · Payments</span>
+      </div>
+      <div class="proj-links">
+        <a href="https://www.shepays.com/" target="_blank" class="proj-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          Website
+        </a>
       </div>
     </div>
 
@@ -563,6 +611,12 @@
         <span class="proj-tag">REST API</span>
         <span class="proj-domain">FinTech · Lending</span>
       </div>
+      <div class="proj-links">
+        <a href="https://apps.apple.com/in/app/direct-credit-loan/id6754832108" target="_blank" class="proj-link">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          App Store
+        </a>
+      </div>
     </div>
 
     <div class="card reveal">
@@ -571,9 +625,15 @@
       <p>A community platform for Indians in the US — offering classified ads, e-commerce, job listings, visa query support, and more, all in one place.</p>
       <div class="proj-tags">
         <span class="proj-tag">Kotlin</span>
-        <span class="proj-tag">Android</span>
+        <span class="proj-tag">Native Android</span>
         <span class="proj-tag">MVVM</span>
         <span class="proj-domain">Community · E-Commerce</span>
+      </div>
+      <div class="proj-links">
+        <a href="https://aaonri.com/" target="_blank" class="proj-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          Website
+        </a>
       </div>
     </div>
 
@@ -582,10 +642,13 @@
       <h3>Paytail Business</h3>
       <p>The merchant-side Android app for the Paytail BNPL platform — enabling store owners to offer buy-now-pay-later options to customers at the point of sale.</p>
       <div class="proj-tags">
-        <span class="proj-tag">Java</span>
-        <span class="proj-tag">Android</span>
+        <span class="proj-tag">Kotlin</span>
+        <span class="proj-tag">Native Android</span>
         <span class="proj-tag">MVVM</span>
         <span class="proj-domain">FinTech · BNPL</span>
+      </div>
+      <div class="proj-links">
+        <span class="proj-private">🔒 Private Project</span>
       </div>
     </div>
 
@@ -594,10 +657,13 @@
       <h3>Paytail Consumer</h3>
       <p>The customer-facing Android app for Paytail — allowing users to discover partner stores, apply for BNPL credit, and manage their purchases and repayments.</p>
       <div class="proj-tags">
-        <span class="proj-tag">Java</span>
-        <span class="proj-tag">Android</span>
+        <span class="proj-tag">Kotlin</span>
+        <span class="proj-tag">Native Android</span>
         <span class="proj-tag">Firebase</span>
         <span class="proj-domain">FinTech · Consumer</span>
+      </div>
+      <div class="proj-links">
+        <span class="proj-private">🔒 Private Project</span>
       </div>
     </div>
 
