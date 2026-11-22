@@ -3,8 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Muhammad Shadab Saif — Flutter & Android Developer</title>
-  <meta name="description" content="Flutter & Android Developer building scalable mobile apps across FinTech, Lending, and E-Commerce." />
+  <title>Muhammad Shadab Saif — Mobile Engineer (Android & Flutter)</title>
+  <meta name="description" content="Mobile Engineer specializing in Android (Kotlin/Java) and Flutter (Dart), building production apps across FinTech, lending, and payments." />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0f172a" />
+  <link rel="canonical" href="https://muhammad-shadab.github.io/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://muhammad-shadab.github.io/" />
+  <meta property="og:title" content="Muhammad Shadab Saif — Mobile Engineer (Android & Flutter)" />
+  <meta property="og:description" content="Mobile Engineer specializing in Android (Kotlin/Java) and Flutter (Dart), building production apps across FinTech, lending, and payments." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/Muhammad-Shadab/Muhammad-Shadab/main/profile-banner.svg" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Muhammad Shadab Saif — Mobile Engineer (Android & Flutter)" />
+  <meta name="twitter:description" content="Mobile Engineer specializing in Android (Kotlin/Java) and Flutter (Dart), building production apps across FinTech, lending, and payments." />
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/Muhammad-Shadab/Muhammad-Shadab/main/profile-banner.svg" />
+
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -173,6 +190,7 @@
     }
     .card:hover { transform: translateY(-4px); border-color: rgba(14,165,233,.3); }
     .card-icon { font-size: 1.8rem; margin-bottom: 1rem; }
+    .card-icon svg { width: 30px; height: 30px; stroke: var(--blue); }
     .card h3 { font-size: 1rem; font-weight: 600; margin-bottom: .5rem; }
     .card p { color: var(--muted); font-size: .875rem; line-height: 1.65; }
 
@@ -231,7 +249,8 @@
       transition: transform .25s, border-color .25s;
     }
     .focus-card:hover { transform: translateY(-4px); border-color: rgba(109,40,217,.4); }
-    .focus-icon { font-size: 2rem; margin-bottom: .75rem; }
+    .focus-icon { font-size: 2rem; margin-bottom: .75rem; display: flex; align-items: center; justify-content: center; }
+    .focus-icon svg:not([fill]), .focus-icon svg[fill="none"] { stroke: var(--blue); width: 32px; height: 32px; }
     .focus-card h3 { font-size: .9rem; font-weight: 600; color: var(--text); }
 
     /* ── CONTACT ── */
@@ -278,8 +297,20 @@
     }
     footer span { color: var(--blue); }
 
+    /* ── ACCESSIBILITY ── */
+    .skip-link {
+      position: absolute; left: -9999px; top: 0; z-index: 200;
+      padding: .6rem 1.2rem; background: var(--blue); color: #fff;
+      font-size: .9rem; border-radius: 0 0 6px 0;
+    }
+    .skip-link:focus { left: 0; }
+    a:focus-visible, button:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+
     /* ── MOBILE ── */
-    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px; cursor: pointer;
+      background: none; border: none; padding: 8px;
+    }
     .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: .3s; }
 
     @media (max-width: 640px) {
@@ -315,10 +346,12 @@
 </head>
 <body>
 
+<a href="#hero" class="skip-link">Skip to main content</a>
+
 <!-- NAV -->
-<nav>
+<nav aria-label="Primary">
   <div class="nav-logo">&lt;shadab.dev /&gt;</div>
-  <ul class="nav-links">
+  <ul class="nav-links" id="nav-links-list">
     <li><a href="#about">About</a></li>
     <li><a href="#what-i-do">Work</a></li>
     <li><a href="#stack">Stack</a></li>
@@ -327,9 +360,9 @@
     <li><a href="#contact">Contact</a></li>
   </ul>
   <a href="mailto:saifshadab08@gmail.com" class="nav-cta">Hire Me</a>
-  <div class="hamburger" onclick="toggleMenu()">
+  <button type="button" class="hamburger" onclick="toggleMenu()" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links-list">
     <span></span><span></span><span></span>
-  </div>
+  </button>
 </nav>
 
 <!-- HERO -->
@@ -378,7 +411,6 @@
         <li><span>🏦</span><span>Deep experience in <strong>Fintech & Loan Processing</strong> apps</span></li>
         <li><span>🔧</span><span>Creating <strong>Flutter Packages</strong> & developer tools</span></li>
         <li><span>🌐</span><span>Active <strong>Open Source</strong> contributor and creator</span></li>
-        <li><span>🤖</span><span>Exploring <strong>AI-powered</strong> mobile applications</span></li>
         <li><span>🎓</span><span><strong>MCA</strong> — Dr. A.P.J. Abdul Kalam Technical University</span></li>
       </ul>
     </div>
@@ -392,32 +424,36 @@
   <p class="section-sub reveal">From idea to app store — I handle the full mobile development lifecycle.</p>
   <div class="cards">
     <div class="card reveal">
-      <div class="card-icon">📱</div>
+      <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2"/><line x1="11" y1="18" x2="13" y2="18"/></svg></div>
       <h3>Flutter Development</h3>
       <p>Build cross-platform Flutter apps from scratch — fast, beautiful, and production-ready for both iOS and Android.</p>
     </div>
     <div class="card reveal">
-      <div class="card-icon">🤖</div>
+      <div class="card-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="30" height="30" fill="#3DDC84">
+          <path d="M17.6 9.48l1.84-3.18c.16-.31.04-.69-.26-.85-.29-.15-.65-.06-.83.22l-1.88 3.24C14.9 8.13 13.48 7.75 12 7.75s-2.9.38-4.47 1.16L5.65 5.67c-.19-.28-.54-.37-.83-.22-.29.16-.41.54-.26.85L6.4 9.48C3.3 11.25 1.28 14.44 1 18h22c-.28-3.56-2.3-6.75-5.4-8.52zM7 15.25c-.69 0-1.25-.56-1.25-1.25S6.31 12.75 7 12.75s1.25.56 1.25 1.25-.56 1.25-1.25 1.25zm10 0c-.69 0-1.25-.56-1.25-1.25s.56-1.25 1.25-1.25 1.25.56 1.25 1.25-.56 1.25-1.25 1.25z"/>
+        </svg>
+      </div>
       <h3>Android Development</h3>
       <p>Native Android apps in Kotlin & Java using Jetpack Compose, MVVM, and Clean Architecture patterns.</p>
     </div>
     <div class="card reveal">
-      <div class="card-icon">📦</div>
+      <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div>
       <h3>SDKs & Packages</h3>
       <p>Design reusable Flutter packages and developer SDKs that teams can drop into any project.</p>
     </div>
     <div class="card reveal">
-      <div class="card-icon">🔗</div>
+      <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div>
       <h3>Integrations</h3>
       <p>Integrate REST APIs, payment gateways, analytics platforms, Firebase, and third-party SDKs seamlessly.</p>
     </div>
     <div class="card reveal">
-      <div class="card-icon">🏪</div>
+      <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div>
       <h3>App Store Publishing</h3>
       <p>Handle Play Store & App Store submissions, compliance, review issues, and release automation end-to-end.</p>
     </div>
     <div class="card reveal">
-      <div class="card-icon">💡</div>
+      <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5.77.77 1.23 1.52 1.41 2.5"/></svg></div>
       <h3>Idea → Product</h3>
       <p>Convert business requirements into scalable mobile solutions — working directly with founders and stakeholders.</p>
     </div>
@@ -540,6 +576,23 @@
     </div>
 
     <div class="card reveal">
+      <div class="card-icon">🔧</div>
+      <h3>Flutter Release Automation</h3>
+      <p>A single Bash script that automates the full Android + iOS release workflow — building, locating artifacts, and generating shareable distribution links for QA and stakeholders in one command.</p>
+      <div class="proj-tags">
+        <span class="proj-tag">Bash</span>
+        <span class="proj-tag">CI/CD</span>
+        <span class="proj-domain">Open Source</span>
+      </div>
+      <div class="proj-links">
+        <a href="https://github.com/Muhammad-Shadab/flutter-release-automation" target="_blank" class="proj-link">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+
+    <div class="card reveal">
       <div class="card-icon">🏦</div>
       <h3>Ruloans B2B</h3>
       <p>A B2B lending platform for loan processing — built for financial institutions and business partners to manage loan pipelines and credit workflows.</p>
@@ -594,7 +647,7 @@
         <span class="proj-domain">FinTech · Payments</span>
       </div>
       <div class="proj-links">
-        <a href="https://www.shepays.com/" target="_blank" class="proj-link">
+        <a href="https://shepays.com/" target="_blank" class="proj-link">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
           Website
         </a>
@@ -628,12 +681,6 @@
         <span class="proj-tag">Native Android</span>
         <span class="proj-tag">MVVM</span>
         <span class="proj-domain">Community · E-Commerce</span>
-      </div>
-      <div class="proj-links">
-        <a href="https://aaonri.com/" target="_blank" class="proj-link">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-          Website
-        </a>
       </div>
     </div>
 
@@ -682,23 +729,19 @@
   <h2 class="section-title reveal">What I'm Working On</h2>
   <div class="focus-grid">
     <div class="focus-card reveal">
-      <div class="focus-icon">🐦</div>
+      <div class="focus-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2"/><line x1="11" y1="18" x2="13" y2="18"/></svg></div>
       <h3>Flutter Development</h3>
     </div>
     <div class="focus-card reveal">
-      <div class="focus-icon">🔓</div>
+      <div class="focus-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
       <h3>Open Source</h3>
     </div>
     <div class="focus-card reveal">
-      <div class="focus-icon">🤖</div>
-      <h3>AI-Powered Mobile Apps</h3>
-    </div>
-    <div class="focus-card reveal">
-      <div class="focus-icon">🏗️</div>
+      <div class="focus-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l8-4 8 4v14"/><path d="M9 9h1"/><path d="M9 13h1"/><path d="M14 9h1"/><path d="M14 13h1"/><path d="M9 21v-4h6v4"/></svg></div>
       <h3>Mobile Architecture</h3>
     </div>
     <div class="focus-card reveal">
-      <div class="focus-icon">🔧</div>
+      <div class="focus-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
       <h3>Developer Tools</h3>
     </div>
     <div class="focus-card reveal">
@@ -748,7 +791,7 @@
 
 <!-- FOOTER -->
 <footer>
-  <p>Designed & built by <span>Muhammad Shadab Saif</span> · 2024</p>
+  <p>Designed & built by <span>Muhammad Shadab Saif</span> · <span id="footer-year"></span></p>
 </footer>
 
 <script>
@@ -762,6 +805,7 @@
   ];
   let li = 0, ci = 0, deleting = false;
   const el = document.getElementById('typed-text');
+  document.getElementById('footer-year').textContent = new Date().getFullYear();
 
   function type() {
     const current = lines[li];
@@ -785,6 +829,7 @@
 
   // Mobile menu
   const navLinks = document.querySelector('.nav-links');
+  const hamburgerBtn = document.querySelector('.hamburger');
 
   function openMenu() {
     navLinks.style.display = 'flex';
@@ -796,10 +841,14 @@
     navLinks.style.background = 'rgba(15,23,42,0.97)';
     navLinks.style.padding = '1.5rem 5%';
     navLinks.style.borderBottom = '1px solid rgba(255,255,255,0.07)';
+    hamburgerBtn.setAttribute('aria-expanded', 'true');
   }
 
   function closeMenu() {
-    if (window.innerWidth <= 640) navLinks.style.display = 'none';
+    if (window.innerWidth <= 640) {
+      navLinks.style.display = 'none';
+      hamburgerBtn.setAttribute('aria-expanded', 'false');
+    }
   }
 
   function toggleMenu() {
